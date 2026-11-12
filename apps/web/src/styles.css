@@ -62,6 +62,8 @@ button.ghost:hover { color: var(--color-accent); }
   border-bottom: 1px solid var(--color-border);
 }
 .task-title { flex: 1; }
+.task input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--color-primary); }
+.task.done .task-title { color: var(--color-muted); text-decoration: line-through; }
 .empty { color: var(--color-muted); text-align: center; padding: var(--space-6) 0; }
 
 .visually-hidden {
