@@ -60,4 +60,4 @@ sla_hours:
 
 high_risk_paths:
   - "**/auth/**"
-  - "apps/web/src/lib/tasks.ts"   # định dạng dữ liệu lưu trên máy người dùng: đổi sai là mất dữ liệu
+  - "**/sync/**"
