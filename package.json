@@ -1,0 +1,13 @@
+{
+  "name": "wata-ai-demo",
+  "private": true,
+  "workspaces": ["apps/web", "e2e"],
+  "scripts": {
+    "dev": "npm run dev -w apps/web",
+    "lint": "npm run lint -w apps/web",
+    "typecheck": "npm run typecheck -w apps/web",
+    "test": "npm run test -w apps/web",
+    "build": "npm run build -w apps/web",
+    "e2e": "npm run test -w e2e"
+  }
+}
