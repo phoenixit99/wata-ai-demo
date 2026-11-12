@@ -1,0 +1,63 @@
+# Cấu hình project cho bộ quy trình WATA AI Agent.
+# Schema đầy đủ: docs/agents/contract.md mục 9.
+# Đây là repo DEMO: một tài khoản GitHub đóng mọi vai trò (xem README mục "Đóng vai").
+
+process_version: "1.5.0"
+language: vi
+tracker: github
+repo: phoenixit99/wata-ai-demo
+default_branch: main
+
+apps:
+  - name: web
+    path: apps/web
+    stack: react-vite
+    standard: docs/coding-standards/react.md
+    commands:
+      lint: "npm run lint -w apps/web"
+      typecheck: "npm run typecheck -w apps/web"
+      test: "npm run test -w apps/web"
+      build: "npm run build -w apps/web"
+
+shared_contract: ""
+e2e:
+  path: e2e
+  command: "npm run e2e"
+mobile:
+  supported_app_versions: 0   # demo không có app mobile
+
+people:            # GitHub login, không có @ — demo: một người đóng mọi vai
+  po: [phoenixit99]
+  ba: [phoenixit99]
+  pm: [phoenixit99]
+  tech_lead: [phoenixit99]
+  qa: [phoenixit99]
+  designer: [phoenixit99]
+  ai_enablement: [phoenixit99]
+  security: [phoenixit99]
+
+design_system: docs/design-system.md
+
+sprint:
+  length_days: 10
+  review_slots: ["10:00", "15:00"]
+  design_approval_days: 2
+
+limits:
+  max_fix_rounds: 3
+  wip_in_progress: 3
+  wip_in_review: 4
+  wip_qa: 4
+  max_turns_per_run: 60
+
+sla_hours:
+  fail_to_dev: 24
+  plan_approval: 8
+  review: 8
+  needs_human: 8
+  merge_decision: 8
+  uat: 48
+
+high_risk_paths:
+  - "**/auth/**"
+  - "apps/web/src/lib/tasks.ts"   # định dạng dữ liệu lưu trên máy người dùng: đổi sai là mất dữ liệu
