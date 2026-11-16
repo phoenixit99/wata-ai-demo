@@ -3,7 +3,7 @@ import { TaskList } from './components/TaskList';
 import { useTasks } from './lib/useTasks';
 
 export default function App() {
-  const { tasks, addTask, removeTask } = useTasks();
+  const { tasks, addTask, removeTask, editTask } = useTasks();
 
   return (
     <main className="app">
@@ -12,7 +12,7 @@ export default function App() {
         <p className="subtitle">{tasks.length} công việc</p>
       </header>
       <TaskForm onAdd={addTask} />
-      <TaskList tasks={tasks} onRemove={removeTask} />
+      <TaskList tasks={tasks} onRemove={removeTask} onEdit={editTask} />
     </main>
   );
 }
