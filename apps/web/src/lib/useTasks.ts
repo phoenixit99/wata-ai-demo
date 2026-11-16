@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { createTask, loadTasks, saveTasks, type Task } from './tasks';
+import { createTask, loadTasks, renameTask, saveTasks, type Task } from './tasks';
 
 export function useTasks() {
   const [tasks, setTasks] = useState<Task[]>(() => loadTasks());
@@ -16,5 +16,9 @@ export function useTasks() {
     setTasks((prev) => prev.filter((t) => t.id !== id));
   };
 
-  return { tasks, addTask, removeTask };
+  const editTask = (id: string, title: string) => {
+    setTasks((prev) => renameTask(prev, id, title));
+  };
+
+  return { tasks, addTask, removeTask, editTask };
 }
