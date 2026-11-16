@@ -35,4 +35,21 @@ describe('App', () => {
     render(<App />);
     expect(screen.getByText('Họp sprint')).toBeInTheDocument();
   });
+
+  it('TC-11-01: không thêm công việc chỉ có khoảng trắng', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.type(screen.getByLabelText('Công việc mới'), '   ');
+    await user.click(screen.getByRole('button', { name: 'Thêm' }));
+    expect(screen.getByText('0 công việc')).toBeInTheDocument();
+    expect(screen.getByText(/Chưa có công việc nào/)).toBeInTheDocument();
+  });
+
+  it('TC-11-02: bỏ khoảng trắng hai đầu tên công việc', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.type(screen.getByLabelText('Công việc mới'), '   Mua sữa   ');
+    await user.click(screen.getByRole('button', { name: 'Thêm' }));
+    expect(screen.getByRole('listitem')).toHaveTextContent(/^Mua sữaXoá$/);
+  });
 });

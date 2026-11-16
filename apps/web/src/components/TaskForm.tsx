@@ -9,7 +9,7 @@ export function TaskForm({ onAdd }: Props) {
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    if (title === '') return;
+    if (title.trim() === '') return;
     onAdd(title);
     setTitle('');
   };
