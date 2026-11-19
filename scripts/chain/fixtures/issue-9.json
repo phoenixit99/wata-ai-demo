@@ -1,0 +1,32 @@
+{
+  "number": 9,
+  "title": "[feature] Sắp xếp danh sách công việc",
+  "labels": [
+    {
+      "name": "status:needs-human"
+    },
+    {
+      "name": "type:feature"
+    },
+    {
+      "name": "risk:standard"
+    },
+    {
+      "name": "priority:p2"
+    },
+    {
+      "name": "app:web"
+    }
+  ],
+  "body": "### Description\n\nLà người dùng có nhiều công việc, tôi muốn sắp xếp danh sách theo thứ tự hợp lý, để thấy việc quan trọng trước.\n\n### Acceptance Criteria\n\n- [ ] AC1: Danh sách công việc được sắp xếp theo thứ tự hợp lý.\n- [ ] AC2: Thứ tự giữ nguyên sau khi tải lại trang.\n\n### Affected apps\n\n- [x] web\n\n### Design\n\nChưa có.\n\n### Technical notes\n\n—\n",
+  "comments": [
+    {
+      "author": {
+        "login": "phoenixit99"
+      },
+      "createdAt": "2026-11-16T07:02:34Z",
+      "url": "https://github.com/phoenixit99/wata-ai-demo/issues/9#issuecomment-6909762108",
+      "body": "## Needs human\n\n> 🧪 **Dữ liệu dựng sẵn cho demo**, không phải kết quả một skill đã chạy thật. Câu hỏi bên dưới là thật: AC1 không kiểm thử được nếu chưa chốt \"thứ tự hợp lý\" là gì.\n\n@phoenixit99 (PO): bước **test-design** dừng ở AC1. \"Thứ tự hợp lý\" có ít nhất 3 cách hiểu, mỗi cách cho ra bộ test case và phạm vi code khác nhau. Đây là quyết định sản phẩm nên AI không tự chọn.\n\n| Phương án | Người dùng thấy gì | Hệ quả kỹ thuật | Size |\n|---|---|---|---|\n| **A. Mới nhất trước** (như hiện tại), thêm nút đảo \"Cũ nhất trước\" | Một nút bật/tắt ở đầu danh sách | Chỉ sắp theo `createdAt`, không đổi kiểu `Task` | S |\n| **B. Kéo thả thủ công** | Kéo từng dòng lên/xuống | Thêm field `order` (tuỳ chọn) vào `Task`, cần đọc dữ liệu cũ; cần thao tác bàn phím cho a11y | L |\n| **C. Theo hạn chót** | Việc gần hạn lên đầu | Phụ thuộc **#5** (hạn chót) chưa có code. Làm sau #5 | M |\n\nCâu hỏi:\n1. Chọn A, B hay C (hoặc cách khác)?\n2. Việc đã xong (#3) nằm cuối danh sách hay giữ nguyên vị trí?\n\nKhi đã chốt: sửa AC1 trong body theo phương án đã chọn, rồi gắn lại `status:test-design`.\n\n---\nĐã chạy: — · Chỉ đọc: body issue, `apps/web/src/lib/tasks.ts`, #3, #5 · Còn là claim: ước lượng size\n"
+    }
+  ]
+}
